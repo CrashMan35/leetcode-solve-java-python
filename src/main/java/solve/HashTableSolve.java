@@ -49,4 +49,18 @@ public class HashTableSolve {
         }
         return set.size() != nums.length;
     }
+
+    public int findLHS(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num:nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        int longest = 0;
+        for (Integer key : map.keySet()) {
+            if (map.containsKey(key + 1)) {
+                longest = Math.max(longest, map.get(key) + map.get(key + 1));
+            }
+        }
+        return longest;
+    }
 }
