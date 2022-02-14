@@ -31,6 +31,20 @@ public class BinarySearchSolve {
         return letters[left % letters.length];
     }
 
+
+    public int singleNonDuplicate(int[] nums) {
+        int low = 0, high = nums.length-1;
+        while (low < high) {
+            int middle = low + (high - low) / 2;
+            if ((middle % 2 == 1 && nums[middle] == nums[middle - 1]) || (middle % 2 == 0 && nums[middle] == nums[middle + 1])) {
+                low = middle + 1;
+            } else {
+                high = middle;
+            }
+        }
+        return nums[low];
+    }
+
     public static void main(String[] args) {
         char[] letters = new char[]{'c', 'f', 'j'};
         System.out.println(nextGreatestLetter(letters,'j'));
