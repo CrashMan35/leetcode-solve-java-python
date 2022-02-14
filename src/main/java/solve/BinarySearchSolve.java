@@ -45,6 +45,23 @@ public class BinarySearchSolve {
         return nums[low];
     }
 
+    public int firstBadVersion(int n) {
+        int low = 1, high = n;
+        while (low < high) {
+            int middle = low + (high - low)/2;
+            if (isBadVersion(middle)) {
+                high = middle;
+            } else {
+                low = middle + 1;
+            }
+        }
+        return low;
+    }
+
+    private boolean isBadVersion(int middle) {
+        return false;
+    }
+
     public static void main(String[] args) {
         char[] letters = new char[]{'c', 'f', 'j'};
         System.out.println(nextGreatestLetter(letters,'j'));
