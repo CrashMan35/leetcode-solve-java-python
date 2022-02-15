@@ -62,6 +62,19 @@ public class BinarySearchSolve {
         return false;
     }
 
+    public int findMin(int[] nums) {
+        int low = 0, high = nums.length - 1;
+        while (low < high) {
+            int middle = low + (high - low) / 2;
+            if (nums[middle] > nums[high]) {
+                low = middle + 1;
+            } else {
+                high = middle;
+            }
+        }
+        return nums[low];
+    }
+
     public static void main(String[] args) {
         char[] letters = new char[]{'c', 'f', 'j'};
         System.out.println(nextGreatestLetter(letters,'j'));
